@@ -1,0 +1,1 @@
+javac -cp "bitcoinj.jar" GenerateAddress.java

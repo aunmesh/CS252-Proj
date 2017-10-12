@@ -1,0 +1,1 @@
+java -cp ./bitcoinj.jar:../lib/*:. GenerateAddress
