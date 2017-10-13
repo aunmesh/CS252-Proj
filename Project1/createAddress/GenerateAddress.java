@@ -20,13 +20,9 @@ class GenerateAddress {
 
     String target="1unmeasdfasdfaasaaaadasds11111111";
 
-    // Let us express this number as an array of bytes (big-endian)
     byte[] bytes25 = Base58.decode(target);
+    System.out.println("Size = " + bytes25.length);
 
-    // let us check our number has the correct size
-    System.out.println("Size = " + bytes25.length);  // 25 , good
-
-    // let us check the leading byte is indeed 0x00
     System.out.println("bytes25[0] = " + bytes25[0]); // yes it is !
 
     // retrieving the first 21 bytes
