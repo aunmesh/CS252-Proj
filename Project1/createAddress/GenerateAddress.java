@@ -10,23 +10,17 @@ class GenerateAddress {
 
     NetworkParameters main = MainNetParams.get(); // main bitcoin network
 
-    // alphabet is "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
-
-    // This is where we decide what we want to say. The base 58 alphabet
-    // does not allow us to use 'l', 'I', 'O' or '0' but that's fine. 
-    // We are trying to obtain a number which is 25 bytes long with a leading
-    // byte of 0x00. So we probably need to start with a leading '1', and 
-    // we need to add some padding to the right.
-
     String target="1unmeasdfasdfaasaaaadasds11111111";
 
     byte[] bytes25 = Base58.decode(target);
     System.out.println("Size = " + bytes25.length);
 
-    System.out.println("bytes25[0] = " + bytes25[0]); // yes it is !
-
+    //checking first byte is 0x00
+    System.out.println("bytes25[0] = " + bytes25[0]);
+    
     // retrieving the first 21 bytes
     byte[] bytes21 = new byte[21];
+    
     System.arraycopy(bytes25, 0, bytes21, 0, 21);
 
     // Let us get the double Sha256 hash of these 21 bytes
@@ -44,11 +38,9 @@ class GenerateAddress {
     // encoding this 25 bytes address in Base 58
     String strAddr = Base58.encode(addr);
 
-    // Address = "1HeLLoWorLdHowAreYouiAmojzzzzu7udH" , almost perfect !
     System.out.println("Address = " + strAddr);
 
-    // let us check address is a valid bitcoin address
-    Address address = Address.fromBase58(main, strAddr);  // no errors, good
+    Address address = Address.fromBase58(main, strAddr); 
 
   }
 }
